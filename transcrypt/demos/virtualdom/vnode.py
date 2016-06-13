@@ -7,8 +7,8 @@ def is_array(s):
     return Array.isArray(s)
 
 
-def VNode(sel, data={}, children, text, elm) :
-    key = data['key'] if 'key' in data.keys else None
+def VNode(sel, data={}, children=[], text=None, elm=None) :
+    key = data['key'] if 'key' in data else None
     return {
         'sel': sel,
         'data': data,

@@ -1,6 +1,14 @@
 from vnode import *
 
 
+def map(f, l):
+    return [f(item) for item in l]
+
+
+def filter(f, l):
+    return [item for item in l if f(item)]
+
+
 def add_ns(data, children):
     data['ns'] = 'http://www.w3.org/2000/svg'
     if children is not None:
@@ -8,7 +16,7 @@ def add_ns(data, children):
             add_ns(child['data'], child['children'])
 
 
-def h(sel, b, c):
+def h(sel, b=None, c=None):
     data = {}
     text = None
     children = None
@@ -28,9 +36,9 @@ def h(sel, b, c):
             data = b
 
     if is_array(children):
-        for child in children:
-            if is_primitive(child):
-                child = VNode(None, None, None, child)
+        children2 = map(lambda child: (VNode(None, None, None, child) if is_primitive(child) else child),
+            children)
+        children = children2
 
     if sel[0:2] == 'svg':
         add_ns(data, children)
