@@ -4,11 +4,6 @@ from vnode import *
 def map(f, l):
     return [f(item) for item in l]
 
-
-def filter(f, l):
-    return [item for item in l if f(item)]
-
-
 def add_ns(data, children):
     data['ns'] = 'http://www.w3.org/2000/svg'
     if children is not None:
