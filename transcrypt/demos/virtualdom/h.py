@@ -12,7 +12,7 @@ def add_ns(data, children):
 
 
 def h(sel, b=None, c=None):
-    data = {}
+    data = dict()
     text = None
     children = None
 
